@@ -24,4 +24,4 @@ Route::get('/contatos', [ContatoController::class, 'index']);
 Route::get('/produtos/{id?}', [ProdutoController::class, 'index']);
 Route::get('/produtos/listagem/{pesquisar_item}', [ProdutoController::class, 'lista']);
 
-Route::get('/teste', [TesteController::class, 'index']);
+Route::get('/teste/{id?}', [TesteController::class, 'index']);
