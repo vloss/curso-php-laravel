@@ -13,8 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('testes', function (Blueprint $table) {
-            $table->string('no_categoria', 200);
+        Schema::create('testes', function (Blueprint $table) {
+            $table->id();
+            $table->string('no_teste', 255);
+            $table->integer('nr_teste');
+            $table->bigInteger('nr_quantidade');
+            $table->timestamps();
         });
     }
 
@@ -25,8 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('testes', function (Blueprint $table) {
-            $table->dropColumn('no_categoria');
-        });
+        Schema::dropIfExists('testes');
     }
 };
