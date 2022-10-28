@@ -14,21 +14,20 @@
     </div>
 
     <div id="events-container" class="col-md-12">
-        <h2>Proximos Eventos</h2>
-        <p>Veja os eventos dos proximos dias</p>
+        <h2>Próximos Eventos</h2>
+        <p class="subtitle">Veja os eventos dos próximos dias</p>
 
         <div id="cards-conteiner" class="row">
             @foreach ($listagem as $item)
                 <div class="card col-md-3">
-                    <img src="img/logo.png" alt="{{$item->no_evento}}">
+                    <img src="/img/logo.png" alt="{{$item->no_evento}}">
                     <div class="card-body">
                         <p class="card-date">10/09/2022</p>
                         <h5 class="card-title">{{$item->no_evento}}</h5>
                         <p class="card-participants">X Participantes</p>
                         <a href="#" class="btn btn-primary">Saber Mais</a>
                     </div>
-                    
-
+                
                 </div>
             @endforeach
         </div>
