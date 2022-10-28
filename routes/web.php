@@ -16,7 +16,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EventoController;
 use App\Http\Controllers\ContatoController;
 use App\Http\Controllers\ProdutoController;
-use App\Http\Controllers\TesteController;
 
 Route::get('/', [EventoController::class, 'index']);
 Route::get('/evento/criar', [EventoController::class, 'create']);
@@ -25,4 +24,6 @@ Route::get('/produtos/{id?}', [ProdutoController::class, 'index']);
 Route::get('/produtos/listagem/{pesquisar_item}', [ProdutoController::class, 'lista']);
 
 
-Route::get('teste', [TesteController::class, 'index']);
+Route::get('/teste', function(){
+    return 12;
+});
