@@ -30,6 +30,6 @@ class EventoController extends Controller
 
         $evento->save();
 
-        return redirect('/');
+        return redirect('/')->with('msg', 'Evento criado com sucesso!');
     }
 }
