@@ -20,6 +20,8 @@ use App\Http\Controllers\TesteController;
 
 Route::get('/', [EventoController::class, 'index']);
 Route::get('/evento/criar', [EventoController::class, 'create']);
+Route::post('eventos', [EventoController::class, 'store']);
+
 Route::get('/contatos', [ContatoController::class, 'index']);
 Route::get('/produtos/{id?}', [ProdutoController::class, 'index']);
 Route::get('/produtos/listagem/{pesquisar_item}', [ProdutoController::class, 'lista']);
