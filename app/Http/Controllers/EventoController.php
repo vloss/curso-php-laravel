@@ -19,6 +19,13 @@ class EventoController extends Controller
         return view('eventos.create');
     }
 
+    public function show($id){
+        
+        $item =  Evento::findOrFail($id);
+        
+        return view('eventos.show', ['item' => $item]);
+    }
+
     public function store(Request $request){
 
         $evento = new Evento;
