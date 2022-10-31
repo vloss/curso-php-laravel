@@ -35,6 +35,7 @@ class EventoController extends Controller
         $evento->desc_evento    = $request->desc_evento;
         $evento->fl_privado     = $request->fl_privado;
         $evento->array_itens    = $request->array_itens;
+        $evento->dt_evento    = $request->dt_evento;
 
 
         // Valida IMG

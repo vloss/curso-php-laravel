@@ -12,4 +12,6 @@ class Evento extends Model
     protected $casts = [
         'array_itens' => 'array'
     ];
+
+    protected $dates = ['dt_evento'];
 }
