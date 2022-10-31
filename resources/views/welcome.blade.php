@@ -20,7 +20,7 @@
         <div id="cards-conteiner" class="row">
             @foreach ($listagem as $item)
                 <div class="card col-md-3">
-                    <img src="/img/logo.png" alt="{{$item->no_evento}}">
+                    <img src="/img/eventos/{{ $item->no_img_evento }}" alt="{{$item->no_evento}}">
                     <div class="card-body">
                         <p class="card-date">10/09/2022</p>
                         <h5 class="card-title">{{$item->no_evento}}</h5>
