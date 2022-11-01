@@ -38,6 +38,15 @@ class EventoController extends Controller
         return view('eventos.show', ['item' => $item, 'proprietario' => $proprietario]);
     }
 
+    public function dashboard(){
+
+        $usuario_logado = auth()->user();
+
+        $listagem = $usuario_logado->eventos;
+        
+        return view('eventos.dashboard', ['listagem' => $listagem]);
+    }
+
     public function store(Request $request){
 
         $usuario_logado = auth()->user();
