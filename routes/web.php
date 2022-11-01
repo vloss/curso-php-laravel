@@ -22,12 +22,13 @@ Route::get('/', [EventoController::class, 'index']);
 Route::get('/evento/criar', [EventoController::class, 'create'])->middleware('auth');
 Route::post('eventos', [EventoController::class, 'store']);
 Route::get('/evento/visualizar/{id}', [EventoController::class, 'show']);
+Route::delete('eventos/{id}', [EventoController::class, 'destroy']);
 
 Route::get('/contatos', [ContatoController::class, 'index']);
 Route::get('/produtos/{id?}', [ProdutoController::class, 'index']);
 Route::get('/produtos/listagem/{pesquisar_item}', [ProdutoController::class, 'lista']);
-
 Route::get('/dashboard', [EventoController::class, 'dashboard'])->middleware('auth');
-
 Route::get('/teste/{id?}', [TesteController::class, 'index']);
+
+
 
