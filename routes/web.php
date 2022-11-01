@@ -22,7 +22,9 @@ Route::get('/', [EventoController::class, 'index']);
 Route::get('/evento/criar', [EventoController::class, 'create'])->middleware('auth');
 Route::post('eventos', [EventoController::class, 'store']);
 Route::get('/evento/visualizar/{id}', [EventoController::class, 'show']);
-Route::delete('eventos/{id}', [EventoController::class, 'destroy']);
+Route::delete('eventos/{id}', [EventoController::class, 'destroy'])->middleware('auth');
+Route::get('/eventos/editar/{id}', [EventoController::class, 'edit'])->middleware('auth');
+Route::put('/eventos/update/{id}', [EventoController::class, 'update'])->middleware('auth');
 
 Route::get('/contatos', [ContatoController::class, 'index']);
 Route::get('/produtos/{id?}', [ProdutoController::class, 'index']);

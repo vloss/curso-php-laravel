@@ -28,7 +28,7 @@
                         <td><a href="evento/visualizar/{{ $item->id }}">{{ $item->no_evento }}</a></td>
                         <td>0</td>
                         <td>
-                            <a href="#"  class="btn btn-info edit-btn">Editar </a> 
+                            <a href="/eventos/editar/{{$item->id}}"  class="btn btn-info edit-btn">Editar </a> 
                             <form action="/eventos/{{$item->id}}" method="POST">
                                 @csrf
                                 @method('DELETE')
