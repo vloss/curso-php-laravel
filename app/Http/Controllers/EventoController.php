@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\Evento;  
+use App\Models\User;
 
 class EventoController extends Controller
 {
@@ -31,11 +32,15 @@ class EventoController extends Controller
     public function show($id){
         
         $item =  Evento::findOrFail($id);
+
+        $proprietario = User::where('id', $item->user_id)->first()->toArray();
         
-        return view('eventos.show', ['item' => $item]);
+        return view('eventos.show', ['item' => $item, 'proprietario' => $proprietario]);
     }
 
     public function store(Request $request){
+
+        $usuario_logado = auth()->user();
 
         $evento = new Evento;
 
@@ -44,7 +49,8 @@ class EventoController extends Controller
         $evento->desc_evento    = $request->desc_evento;
         $evento->fl_privado     = $request->fl_privado;
         $evento->array_itens    = $request->array_itens;
-        $evento->dt_evento    = $request->dt_evento;
+        $evento->dt_evento      = $request->dt_evento;
+        $evento->user_id        = $usuario_logado->id;
 
 
         // Valida IMG

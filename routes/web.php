@@ -19,7 +19,7 @@ use App\Http\Controllers\ProdutoController;
 use App\Http\Controllers\TesteController;
 
 Route::get('/', [EventoController::class, 'index']);
-Route::get('/evento/criar', [EventoController::class, 'create']);
+Route::get('/evento/criar', [EventoController::class, 'create'])->middleware('auth');
 Route::post('eventos', [EventoController::class, 'store']);
 Route::get('/evento/visualizar/{id}', [EventoController::class, 'show']);
 
