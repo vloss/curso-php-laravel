@@ -64,7 +64,11 @@
                         <td><a href="evento/visualizar/{{ $item->id }}">{{ $item->no_evento }}</a></td>
                         <td>{{count($item->users)}}</td>
                         <td>
-                            <a href="#">Sair do Evento</a>
+                            <form action="/eventos/sair/{{$item->id }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger delete-btn">Sair do Evento</button>
+                            </form>
                         </td>
                     </tr>
                 @endforeach

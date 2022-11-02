@@ -15,18 +15,24 @@
             <p class="events-participants"><ion-icon name="people-outline"></ion-icon> {{count($item->users)}}</p>
             <p class="event-owner"><ion-icon name="star-outline"></ion-icon> {{ $proprietario['name'] }}</p>
 
-            <form action="/eventos/join/{{$item->id}}" method="POST">
-                @csrf
-                @method('POST')
-                <a 
-                    href="/eventos/join/{{$item->id}}" 
-                    class="btn btn-primary" 
-                    id="event-submit"
-                    onclick="event.preventDefault(); this.closest('form').submit();">
-                    Confirmar Presença
-                </a>
+@if (!$fl_ja_inscrito)
+    <form action="/eventos/join/{{$item->id}}" method="POST">
+        @csrf
+        @method('POST')
+        <a 
+            href="/eventos/join/{{$item->id}}" 
+            class="btn btn-primary" 
+            id="event-submit"
+            onclick="event.preventDefault(); this.closest('form').submit();">
+            Confirmar Presença
+        </a>
+
+    </form>
+@else
+    <p>Você já está inscrito!</p>
+@endif
+
             
-            </form>
             
             
 

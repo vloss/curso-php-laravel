@@ -26,6 +26,7 @@ Route::delete('eventos/{id}', [EventoController::class, 'destroy'])->middleware(
 Route::get('/eventos/editar/{id}', [EventoController::class, 'edit'])->middleware('auth');
 Route::put('/eventos/update/{id}', [EventoController::class, 'update'])->middleware('auth');
 Route::post('/eventos/join/{id}', [EventoController::class, 'joinEvento'])->middleware('auth');
+Route::delete('/eventos/sair/{id}', [EventoController::class, 'sair_evento'])->middleware('auth');
 
 Route::get('/contatos', [ContatoController::class, 'index']);
 Route::get('/produtos/{id?}', [ProdutoController::class, 'index']);

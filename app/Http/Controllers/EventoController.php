@@ -30,12 +30,26 @@ class EventoController extends Controller
     }
 
     public function show($id){
+
+        $user = auth()->user();
         
         $item =  Evento::findOrFail($id);
 
+        $fl_ja_inscrito = false;
+
+        if($user){
+            $listagem_participacao = $user->eventosToParticipantes;
+
+            foreach ($listagem_participacao as $key => $value) {
+                if($id == $value->id){
+                    $fl_ja_inscrito = true;
+                }
+            }
+        }
+
         $proprietario = User::where('id', $item->user_id)->first()->toArray();
         
-        return view('eventos.show', ['item' => $item, 'proprietario' => $proprietario]);
+        return view('eventos.show', ['item' => $item, 'proprietario' => $proprietario, 'fl_ja_inscrito' => $fl_ja_inscrito]);
     }
 
     public function dashboard(){
@@ -133,6 +147,18 @@ class EventoController extends Controller
         $evento = Evento::findOrFail($id);
 
         return redirect('/dashboard')->with('msg', 'Sua presença está confirmada no evento ' .$evento->no_evento. '!');
+
+
+    }
+    public function sair_evento($id){
+        
+        $user = auth()->user();
+
+        $user->eventosToParticipantes()->detach($id);
+
+        $evento = Evento::findOrFail($id);
+
+        return redirect('/dashboard')->with('msg', 'Sua presença foi removida do evento ' .$evento->no_evento. '!');
 
     }
 }
