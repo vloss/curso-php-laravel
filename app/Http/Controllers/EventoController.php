@@ -40,11 +40,13 @@ class EventoController extends Controller
 
     public function dashboard(){
 
-        $usuario_logado = auth()->user();
+        $user = auth()->user();
 
-        $listagem = $usuario_logado->eventos;
+        $eventos = $user->eventos;
+
+        $listagem_participacao = $user->eventosToParticipantes;
         
-        return view('eventos.dashboard', ['listagem' => $listagem]);
+        return view('eventos.dashboard', ['listagem' => $eventos, 'eventos_participacao' => $listagem_participacao ]);
     }
 
     public function store(Request $request){
@@ -89,7 +91,13 @@ class EventoController extends Controller
 
     public function edit($id){
 
+        $user = auth()->user();
+
         $dados = Evento::findOrFail($id);
+
+        if ($user->id != $dados->user_id) {
+            return redirect('/dashboard');
+        }
 
         return view('eventos.editar', ['dados' => $dados]);
     }
